@@ -11,6 +11,9 @@
               <li>
                   <router-link to="/signup">signup</router-link>
               </li>
+              <li>
+                  <router-link to="/posts">posts</router-link>
+              </li>
           </ul>
       </nav>
   </header>

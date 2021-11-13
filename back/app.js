@@ -9,12 +9,15 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import { body, Result, validationResult } from 'express-validator'
 import bcrypt from 'bcryptjs';
+import cors from 'cors'
 
 import User from './models/User.js'
+import Posts from './models/Posts.js'
 
 dotenv.config();
 const app = express();
 app.use(bodyParser.json())
+app.use(cors())
 
 
 app.post('/auth/signup', [
@@ -70,16 +73,12 @@ app.post('/auth/signup', [
             message: '201',
             user: result,
         })
-    } catch(err) { 
+    } catch(error) { 
         if(!error.statusCode) {
             error.statusCode = 500
         }
-        next(err)
+        next(error)
     }
-
-    res.json({
-        msg: 'succse'
-    })
 })
 
 
@@ -92,6 +91,18 @@ app.use( (error, req, res, next) => {
         res.status(status).json({ message, data })
 
 })
+
+
+
+app.post('/posts', async (req, res) => {
+    await console.log(req.body)
+
+    
+    res.status(201).json({
+        aa: 'aa'
+    })
+})
+
 
 
 
