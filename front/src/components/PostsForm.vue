@@ -7,7 +7,7 @@
         </div>
         <div>
             <label for="conts">content</label>
-            <input id="conts" type="text" v-model="content">
+            <input id="conts" type="text" v-model="conts">
         </div>
         <button type="submit">posts</button>
      </form>
@@ -21,16 +21,17 @@ export default {
     data() {
         return {
             title: '',
-            content: '',
+            conts: '',
         }
     },
 
     methods: {
         handlePosts(e) {
             e.preventDefault();
+            
             posts({
                 title: this.title,
-                content: this.content,
+                conts: this.conts,
                 
             })
         }

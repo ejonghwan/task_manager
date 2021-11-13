@@ -8,7 +8,7 @@ const Posts = new Schema({
         type: String,
         require: true,
     },
-    constent: {
+    conts: {
         type: String,
         require: true,
     }

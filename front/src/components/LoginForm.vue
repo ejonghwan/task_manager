@@ -15,6 +15,8 @@
 </template>
 
 <script>
+
+
 export default {
     data() {
         return {
@@ -26,7 +28,11 @@ export default {
     methods: {
         handleSubmit(e) {
             e.preventDefault();
-            // this.$store.dispatch('signupUser', )
+            this.$store.dispatch('isLogged', {
+                email: this.email,
+                password: this.password,
+
+            })
         }
     },
     

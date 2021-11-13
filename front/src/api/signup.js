@@ -1,7 +1,13 @@
 import { instance } from './index.js'
 
 
+function login(data) {
+    return instance.post('/auth/login', data)
+}
 
-export function singup(data) {
+function singup(data) {
     return instance.post('/auth/signup', data)
 }
+
+
+export { login, singup }

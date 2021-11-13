@@ -20,6 +20,25 @@ app.use(bodyParser.json())
 app.use(cors())
 
 
+app.post('/auth/login', [], async (req, res, next) => {
+
+    try {
+        await User.findOne({
+            email: req.body.email,
+        }).then(user => {
+            
+            res.status(201).json({
+                user: user,
+            })
+
+        })
+   
+        
+    } catch(err) {
+        res.status(401).send('에러나썽')
+    }
+})
+
 app.post('/auth/signup', [
     // express-validator 
     body('email')
@@ -95,12 +114,28 @@ app.use( (error, req, res, next) => {
 
 
 app.post('/posts', async (req, res) => {
-    await console.log(req.body)
 
+    const title = req.body.title;
+    const conts = req.body.conts;
+
+    try {
+        const posts = new Posts({
+            title,
+            conts,
+        })
+
+        // const postsFind = await posts.findOne({title: "test1"})
+        // await console.log(postsFind)
+
+        const result = await posts.save()
+        res.status(201).json({
+            statusCode: 201,
+            posts: result
+        })
+    } catch(err) {
+        res.status(401).send(err)
+    }
     
-    res.status(201).json({
-        aa: 'aa'
-    })
 })
 
 

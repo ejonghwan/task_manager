@@ -8,7 +8,9 @@
 
 import PostsForm from '@/components/PostsForm.vue';
 export default {
-
+    components: {
+        PostsForm,
+    }
 }
 </script>
 
